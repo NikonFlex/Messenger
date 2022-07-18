@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessangerDesktopClient", "MessangerDesktopClient\MessangerDesktopClient.csproj", "{01C69FEC-D4F2-4E27-92D2-7481C691FE72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessangerApi", "MessangerApi\MessangerApi.csproj", "{144CD813-B360-422B-93E6-FA1A6212FC1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01C69FEC-D4F2-4E27-92D2-7481C691FE72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C69FEC-D4F2-4E27-92D2-7481C691FE72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C69FEC-D4F2-4E27-92D2-7481C691FE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C69FEC-D4F2-4E27-92D2-7481C691FE72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144CD813-B360-422B-93E6-FA1A6212FC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144CD813-B360-422B-93E6-FA1A6212FC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144CD813-B360-422B-93E6-FA1A6212FC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144CD813-B360-422B-93E6-FA1A6212FC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {147FF375-8BED-4D9A-B40D-2FC616A86FA4}
+	EndGlobalSection
+EndGlobal
