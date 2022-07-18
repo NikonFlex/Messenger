@@ -17,9 +17,12 @@ namespace MessangerDesktopClient.Pages
 {
    public partial class MessagingPage : Page
    {
-      public MessagingPage()
+      private int _userId;
+
+      public MessagingPage(int userId)
       {
          InitializeComponent();
+         _userId = userId;
       }
 
       private void MessageTextBox_KeyDown(object sender, KeyEventArgs e)

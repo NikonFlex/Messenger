@@ -11,6 +11,13 @@ using MessangerApi.DTOs;
 
 namespace MessangerApi.Controllers
 {
+   public class CheckUserResponse
+   {
+      public bool IsExist { get; set; }
+      public int UserId { get; set; } 
+      public string Messege { get; set; }
+   }
+
    [Route("users")]
    public class UsersController : Controller
    {
@@ -39,11 +46,27 @@ namespace MessangerApi.Controllers
       //}
 
       [HttpGet("CheckUser")]
-      public bool IsUserExist(string login, string password)
+      public ActionResult IsUserExist(string login, string password)
       {
-         if (_ctx.Users.FirstOrDefault(u => u.Login == login && u.Password == password) is not null)
-            return true;
-         return false;
+         var user = _ctx.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+         if (user is not null)
+         {
+            return new JsonResult(new CheckUserResponse() 
+            { 
+               IsExist = true, 
+               UserId = user.Id,
+               Messege = "Successfully verified"
+            });
+         }
+         else
+         {
+            return new JsonResult(new CheckUserResponse()
+            {
+               IsExist = false,
+               UserId = -1,
+               Messege = "No such user or incorrect verify data"
+            });
+         }
       }
 
       [HttpPost]

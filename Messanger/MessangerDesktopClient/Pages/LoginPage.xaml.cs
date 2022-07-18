@@ -32,12 +32,12 @@ namespace MessangerDesktopClient.Pages
          });
       }
 
-      private void tryLogin(bool apiAnswer)
+      private void tryLogin(Models.CheckUserResponse apiAnswer)
       {
-         if (apiAnswer)
-            NavigationService.Navigate(new MessagingPage());
+         if (apiAnswer.IsExist)
+            NavigationService.Navigate(new MessagingPage(apiAnswer.UserId));
          else
-            MessageLabel.Content = "Incorrect Login or Password";
+            MessageLabel.Content = apiAnswer.Messege;
       }
 
       private void LoginTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)

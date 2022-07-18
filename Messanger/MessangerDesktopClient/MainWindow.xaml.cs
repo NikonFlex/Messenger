@@ -34,8 +34,8 @@ namespace MessangerDesktopClient
          _client.DefaultRequestHeaders.Accept.Add(
              new MediaTypeWithQualityHeaderValue("application/json"));
       }
-
-      public static async Task<bool> CheckUserExisting(Models.User user)
+      
+      public static async Task<Models.CheckUserResponse> CheckUserExisting(Models.User user)
       {
          //TODO: ["login"] = user.Login, ["password"] = user.Password
          var query = new Dictionary<string, string>()
@@ -46,7 +46,7 @@ namespace MessangerDesktopClient
          var uri = QueryHelpers.AddQueryString(_client.BaseAddress.ToString() + "users/CheckUser", query);
 
          var response = await _client.GetAsync(uri);
-         return await response.Content.ReadAsAsync<bool>();
+         return await response.Content.ReadAsAsync<Models.CheckUserResponse>();
       }
    }
 }
