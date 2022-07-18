@@ -28,12 +28,12 @@ namespace MessangerApi.Controllers
          _ctx = ctx;
       }
 
-      //[HttpGet]
-      //public List<User> GetAllUsers()
-      //{
-      //   var users = _ctx.Users.ToList();
-      //   return users;
-      //}
+      [HttpGet("GetAllUsers")]
+      public List<User> GetAllUsers()
+      {
+         var users = _ctx.Users.ToList();
+         return users;
+      }
 
       //[HttpGet("{id}")]
       //public string GetUserById(int id)
@@ -69,15 +69,15 @@ namespace MessangerApi.Controllers
          }
       }
 
-      [HttpPost]
-      public void CreateNewUser([FromBody]UserDTO newUser)
-      {
-         if (_ctx.Users.FirstOrDefault(u => u.Login == newUser.Login) is not null) 
-            return;
+      //[HttpPost]
+      //public void CreateNewUser([FromBody]UserDTO newUser)
+      //{
+      //   if (_ctx.Users.FirstOrDefault(u => u.Login == newUser.Login) is not null) 
+      //      return;
 
-         _ctx.Users.Add(new User() { Login = newUser.Login, Password = newUser.Password });
-         _ctx.SaveChanges();
-      }
+      //   _ctx.Users.Add(new User() { Login = newUser.Login, Password = newUser.Password });
+      //   _ctx.SaveChanges();
+      //}
 
       //[HttpPut("{id}")]
       //public void ChangeUserName(int id, [FromBody] string value)

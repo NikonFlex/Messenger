@@ -23,17 +23,33 @@ namespace MessangerDesktopClient.Pages
       {
          InitializeComponent();
          _userId = userId;
+         createUsersListView();
+      }
+
+      private void createUsersListView()
+      {
+         MainWindow.GetAllUsers().ContinueWith(response =>
+         {
+            foreach (Models.User user in response.Result)
+               if (user.Id != _userId)
+                  Dispatcher.Invoke(new Action(() => createUserView(user)));
+         });
+      }
+
+      private void createUserView(Models.User user)
+      {
+         UsersStackPanel.Children.Add(new UserView(user.Login, "Hello"));
       }
 
       private void MessageTextBox_KeyDown(object sender, KeyEventArgs e)
       {
-         UsersStackPanel.Children.Add(new UserView("Nikon", "Hello"));
-         string message;
-         if (e.Key == Key.Enter)
-         {
-            message = MessageTextBox.Text.ToString();
-            int a = 8;
-         }
+         //UsersStackPanel.Children.Add(new UserView("Nikon", "Hello"));
+         //string message;
+         //if (e.Key == Key.Enter)
+         //{
+         //   message = MessageTextBox.Text.ToString();
+         //   int a = 8;
+         //}
       }
    }
 }

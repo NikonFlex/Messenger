@@ -24,7 +24,13 @@ namespace MessangerDesktopClient.Pages
 
       private void LoginButton_Click(object sender, RoutedEventArgs e)
       {
-         Models.User user = new(LoginTextBox.Text, PasswordTextBox.Text);
+         Models.User user = new Models.User() 
+         { 
+            Id = 1,
+            Login = LoginTextBox.Text, 
+            Password = PasswordTextBox.Text 
+         };
+
          MessageLabel.Content = "Verifying ...";
          MainWindow.CheckUserExisting(user).ContinueWith(res =>
          {

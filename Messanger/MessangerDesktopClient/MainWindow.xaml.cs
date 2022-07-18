@@ -48,5 +48,12 @@ namespace MessangerDesktopClient
          var response = await _client.GetAsync(uri);
          return await response.Content.ReadAsAsync<Models.CheckUserResponse>();
       }
+
+      public static async Task<List<Models.User>> GetAllUsers()
+      {
+         var uri = _client.BaseAddress.ToString() + "users/GetAllUsers";
+         var response = await _client.GetAsync(uri);
+         return await response.Content.ReadAsAsync<List<Models.User>>();
+      }
    }
 }

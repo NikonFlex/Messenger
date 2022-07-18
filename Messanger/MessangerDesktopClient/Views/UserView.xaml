@@ -7,9 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="70" 
              d:DesignWidth="300">
-    <Grid MouseDown="Grid_MouseDown">
+    <Grid 
+        MouseDown="Grid_MouseDown">
+        
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
@@ -18,7 +20,8 @@
         <Label
             x:Name="UserNameLabel"
             Grid.Column="0"
-            Background="White"/>
+            Background="AntiqueWhite"
+            VerticalContentAlignment="Center"/>
         <Label
             x:Name="LastMessageLabel"
             Grid.Column="1"
