@@ -14,7 +14,7 @@ namespace MessangerApi.Controllers
    public class CheckUserResponse
    {
       public bool IsExist { get; set; }
-      public int UserId { get; set; } 
+      public UserDTO User { get; set; } 
       public string Messege { get; set; }
    }
 
@@ -29,10 +29,13 @@ namespace MessangerApi.Controllers
       }
 
       [HttpGet("GetAllUsers")]
-      public List<User> GetAllUsers()
+      public List<UserDTO> GetAllUsers()
       {
-         var users = _ctx.Users.ToList();
-         return users;
+         return _ctx.Users.Select(user => new UserDTO()
+         {
+            Id = user.Id,
+            Login = user.Login
+         }).ToList();
       }
 
       //[HttpGet("{id}")]
@@ -54,7 +57,11 @@ namespace MessangerApi.Controllers
             return new JsonResult(new CheckUserResponse() 
             { 
                IsExist = true, 
-               UserId = user.Id,
+               User = new UserDTO()
+               {
+                  Id = user.Id,
+                  Login = user.Login
+               },
                Messege = "Successfully verified"
             });
          }
@@ -63,16 +70,20 @@ namespace MessangerApi.Controllers
             return new JsonResult(new CheckUserResponse()
             {
                IsExist = false,
-               UserId = -1,
+               User = new UserDTO()
+               {
+                  Id = -1,
+                  Login = ""
+               },
                Messege = "No such user or incorrect verify data"
             });
          }
       }
 
       //[HttpPost]
-      //public void CreateNewUser([FromBody]UserDTO newUser)
+      //public void CreateNewUser([FromBody] User newUser)
       //{
-      //   if (_ctx.Users.FirstOrDefault(u => u.Login == newUser.Login) is not null) 
+      //   if (_ctx.Users.FirstOrDefault(u => u.Login == newUser.Login) is not null)
       //      return;
 
       //   _ctx.Users.Add(new User() { Login = newUser.Login, Password = newUser.Password });

@@ -9,7 +9,7 @@ namespace MessangerDesktopClient.Models
    public class CheckUserResponse
    {
       public bool IsExist { get; set; }
-      public int UserId { get; set; }
+      public User User { get; set; }
       public string Messege { get; set; }
    }
 }

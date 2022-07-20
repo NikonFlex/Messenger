@@ -10,6 +10,5 @@ namespace MessangerDesktopClient.Models
    {
       public int Id { get; set; }
       public string Login { set; get; }
-      public string Password { set; get; }
    }
 }

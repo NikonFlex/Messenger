@@ -11,6 +11,7 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
@@ -21,17 +22,30 @@
         <StackPanel
             x:Name="UsersStackPanel"
             Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="0"/>
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Background="AliceBlue"/>
+        <Label 
+            x:Name="CompanionNameLabel"
+            Grid.Column="1"
+            Grid.Row="0"
+            Content="Select a User"
+            FontSize="25"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            Background="AntiqueWhite"/>
         <TextBox
             x:Name="MessageTextBox"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="1"
             FontSize="25"
-            KeyDown="MessageTextBox_KeyDown"/>
+            KeyDown="MessageTextBox_KeyDown"
+            Background="Azure"
+            IsReadOnly="True"/>
         <ListBox
             x:Name="MessagesListBox"
-            Grid.Row="0"
-            Grid.Column="1"/>
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="Beige"/>
     </Grid>
 </Page>

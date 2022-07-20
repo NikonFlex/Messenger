@@ -38,6 +38,23 @@ namespace MessangerApi.Controllers
       //   return user.Name;
       //}
 
+      [HttpGet("GetNewMessagesFromUser")]
+      public List<MessageDTO> GetNewMessagesFromUser(int fromId, int toId, long lastMsgTime)
+      {
+         //TODO: exclude AsEnumerable
+         return _ctx.Messages.Where(msg => msg.FromId == fromId && msg.ToId == toId).
+                                       Select(msg => new MessageDTO()
+                                       {
+                                          FromId = fromId,
+                                          ToId = toId,
+                                          Value = msg.Value,
+                                          SendTime = msg.SendTime,
+                                       }).
+                                       AsEnumerable().Where(msg => msg.SendTime.Ticks > lastMsgTime).
+                                       ToList();
+
+      }
+
       [HttpPost]
       public void CreateNewMessage([FromBody] MessageDTO newMessage)
       {

@@ -12,25 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MessangerDesktopClient.Services;
 
 namespace MessangerDesktopClient.Views
 {
-   public partial class UserView : UserControl
+   public partial class MessegeView : UserControl
    {
-      private Models.User _user;
+      private Models.Message _message;
 
-      public UserView(Models.User user, string lastMessage)
+      public MessegeView(string userName, Models.Message messege)
       {
          InitializeComponent();
-         _user = user;
-         UserNameLabel.Content = user.Login;
-         LastMessageLabel.Content = lastMessage;
-      }
-
-      private void userViewControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-      {
-         ServicesContainer.Get<UserManager>().SetCompanionUser(_user);
+         _message = messege;
+         UserNameLabel.Content = userName;
+         MessageLabel.Content = messege.Value;
       }
    }
 }

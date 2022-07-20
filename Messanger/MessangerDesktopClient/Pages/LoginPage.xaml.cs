@@ -24,15 +24,8 @@ namespace MessangerDesktopClient.Pages
 
       private void LoginButton_Click(object sender, RoutedEventArgs e)
       {
-         Models.User user = new Models.User() 
-         { 
-            Id = 1,
-            Login = LoginTextBox.Text, 
-            Password = PasswordTextBox.Text 
-         };
-
          MessageLabel.Content = "Verifying ...";
-         MainWindow.CheckUserExisting(user).ContinueWith(res =>
+         MainWindow.CheckUserExisting(LoginTextBox.Text, PasswordTextBox.Text).ContinueWith(res =>
          {
             Dispatcher.Invoke(new Action(() => tryLogin(res.Result)));
          });
@@ -41,7 +34,10 @@ namespace MessangerDesktopClient.Pages
       private void tryLogin(Models.CheckUserResponse apiAnswer)
       {
          if (apiAnswer.IsExist)
-            NavigationService.Navigate(new MessagingPage(apiAnswer.UserId));
+         {
+            NavigationService.Navigate(new MessagingPage());
+            Services.ServicesContainer.Get<Services.UserManager>().SetCurrentUser(apiAnswer.User);
+         }
          else
             MessageLabel.Content = apiAnswer.Messege;
       }
