@@ -54,7 +54,7 @@ namespace MessangerDesktopClient.Services
       public void SetCompanionUser(User user)
       {
          CompanionUser = user;
-         LastMessegeTimeFromCompanion = DateTime.Now;
+         LastMessegeTimeFromCompanion = DateTime.UtcNow;
          _onCompanionUserChange?.Invoke();
          SetTimer();
       }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessangerApi.Migrations
 {
     [DbContext(typeof(MessangerDbContext))]
-    [Migration("20220717152904_UserLoginAndPasswordColumnsAdded")]
-    partial class UserLoginAndPasswordColumnsAdded
+    [Migration("20220720191759_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

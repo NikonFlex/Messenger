@@ -18,6 +18,17 @@ namespace MessangerApi.Controllers
       public string Messege { get; set; }
    }
 
+   [Route("")]
+   public class DefaultController : Controller
+   {
+      [HttpGet]
+      public string Get()
+      {
+         return "Api is working";
+      }
+
+   }
+
    [Route("users")]
    public class UsersController : Controller
    {
@@ -37,6 +48,12 @@ namespace MessangerApi.Controllers
             Login = user.Login
          }).ToList();
       }
+
+      //[HttpGet("GetAllUsers")]
+      //public string GetAllUsers()
+      //{
+      //   return "users";
+      //}
 
       //[HttpGet("{id}")]
       //public string GetUserById(int id)

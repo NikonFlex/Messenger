@@ -61,7 +61,7 @@ namespace MessangerDesktopClient.Pages
                foreach (Models.Message message in response.Result)
                   Dispatcher.Invoke(new Action(() => createMessageView(ServicesContainer.Get<UserManager>().CompanionUser.Login, message)));
 
-               ServicesContainer.Get<UserManager>().SetLastMessageTimeFromCompanion(response.Result.Last().SendTime);
+               ServicesContainer.Get<UserManager>().SetLastMessageTimeFromCompanion(response.Result.Last().SendTime.ToUniversalTime());
             }
          });
       }

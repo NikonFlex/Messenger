@@ -42,7 +42,7 @@ namespace MessangerApi.Controllers
       public List<MessageDTO> GetNewMessagesFromUser(int fromId, int toId, long lastMsgTime)
       {
          //TODO: exclude AsEnumerable
-         return _ctx.Messages.Where(msg => msg.FromId == fromId && msg.ToId == toId).
+         var a = _ctx.Messages.Where(msg => msg.FromId == fromId && msg.ToId == toId).
                                        Select(msg => new MessageDTO()
                                        {
                                           FromId = fromId,
@@ -50,9 +50,9 @@ namespace MessangerApi.Controllers
                                           Value = msg.Value,
                                           SendTime = msg.SendTime,
                                        }).
-                                       AsEnumerable().Where(msg => msg.SendTime.Ticks > lastMsgTime).
+                                       AsEnumerable().Where(msg => msg.SendTime.ToUniversalTime().Ticks > lastMsgTime).
                                        ToList();
-
+         return a;
       }
 
       [HttpPost]
@@ -63,7 +63,7 @@ namespace MessangerApi.Controllers
             Value = newMessage.Value,
             FromId = newMessage.FromId,
             ToId = newMessage.ToId,
-            SendTime = DateTime.Now,
+            SendTime = DateTime.UtcNow,
          });
          _ctx.SaveChanges();
       }

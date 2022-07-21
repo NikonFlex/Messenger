@@ -66,13 +66,14 @@ namespace MessangerDesktopClient
 
       public static async Task<List<Models.Message>> GetLastMessagesFromCompanion()
       {
-         //https://localhost:7025/messages/GetNewMessagesFromUser?fromId=12&toId=14&lastMsgTime=2022-07-20%2000%3A30%3A31.0724729
-         var a = Services.ServicesContainer.Get<Services.UserManager>().LastMessegeTimeFromCompanion.ToFileTimeUtc().ToString();
+         //http://nikonflex-001-site1.ftempurl.com/messages/GetNewMessagesFromUser?fromId=1&toId=2&lastMsgTime=12131322342
+         //http://nikonflex-001-site1.ftempurl.com/messages/GetNewMessagesFromUser?fromId=2&toId=1&lastMsgTime=12131322342
+
          var query = new Dictionary<string, string>()
          {
             ["fromId"] = Services.ServicesContainer.Get<Services.UserManager>().CompanionUser.Id.ToString(),
             ["toId"] = Services.ServicesContainer.Get<Services.UserManager>().CurrentUser.Id.ToString(),
-            ["lastMsgTime"] = Services.ServicesContainer.Get<Services.UserManager>().LastMessegeTimeFromCompanion.Ticks.ToString()
+            ["lastMsgTime"] = Services.ServicesContainer.Get<Services.UserManager>().LastMessegeTimeFromCompanion.ToUniversalTime().Ticks.ToString()
          };
          var uri = QueryHelpers.AddQueryString(_client?.BaseAddress?.ToString() + "messages/GetNewMessagesFromUser", query);
 
