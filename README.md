@@ -1,0 +1,1 @@
+This project is a simple messenger where you can only send text messages. It was my first expierence of development projects on asp.NET Core. During development, I have learned basis of working with apis and databases. Also, I tried to deploy it and I even could chat with my friends.
